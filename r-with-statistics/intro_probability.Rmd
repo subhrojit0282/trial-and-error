@@ -3,3 +3,5 @@ title: "Introduction to Probability and Data"
 author: "Subhrojit Nandan"
 output: html_notebook
 ---
+
+Hi welcome to my journey of statistics with R - Subhrojit Nandan
