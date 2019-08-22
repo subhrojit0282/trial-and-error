@@ -63,6 +63,22 @@ you need to **load** them each time you relaunch RStudio.
 library(dplyr)
 library(ggplot2)
 library(statsr)
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(statsr)
+
+data(present)
+View(present)
+
+arbuthnot <- arbuthnot %>%
+  mutate(more_boys = boys > girls)
+
+range(present$year)
+
+arbuthnot <- arbuthnot %>%
+  mutate(total = boys + girls)
 ```
 
 To do so, you can 
@@ -207,7 +223,9 @@ variable that comes after me".
 
 ```{r extract-counts-of-girls-born}
 # type your code for the Question 2 here, and Knit
-
+ggplot(data = arbuthnot, aes(x = year, y = girls)) +
+  geom_point() + 
+  geom_smooth()
 ```
 
 Notice that the way R has printed these data is different. When we looked at the
@@ -352,7 +370,17 @@ do you see?
 
 ```{r plot-proportion-of-boys-over-time}
 # type your code for the Exercise here, and Knit
+present <- present %>%
+  mutate(total = boys + girls)
+View(present)
 
+present <- present %>%
+  mutate(prop_boys = boys / total)
+View(present)
+
+ggplot(data = present, aes(x = year, y = prop_boys)) +
+  geom_point() + 
+  geom_smooth() 
 ```
 
 Finally, in addition to simple mathematical operators like subtraction and 
@@ -427,7 +455,17 @@ decreased over time.
 
 ```{r prop-boys-over-time}
 # type your code for Question 5 here, and Knit
+present <- present %>%
+  mutate(total = boys + girls)
+View(present)
 
+present <- present %>%
+  mutate(prop_boys = boys / total)
+View(present)
+
+ggplot(data = present, aes(x = year, y = prop_boys)) +
+  geom_point() + 
+  geom_smooth()
 ```
 
 
@@ -442,7 +480,9 @@ variable which of the following statements is true?
 
 ```{r more-boys-per-year}
 # type your code for Question 6 here, and Knit
-
+present <- present %>%
+  mutate(more_boys = boys > girls)
+View(present)
 ```
 
 
@@ -457,7 +497,13 @@ variable which of the following statements is true?
 
 ```{r prop-boy-girl-over-time}
 # type your code for Question 7 here, and Knit
+present <- present %>%
+  mutate(prop_boy_girl = boys / girls)
+View(present)
 
+ggplot(data = present, aes(x = year, y = prop_boy_girl)) +
+  geom_point() + 
+  geom_smooth()
 ```
 
 8. In what year did we see the most total number of births in the U.S.? *Hint:* Sort 
@@ -479,6 +525,10 @@ descending order).
 #present %>%
 #  mutate(total = ?) %>%
 #  arrange(desc(total))
+present <- present %>%
+  arrange(desc(total))
+View(present)
+
 ```
 
 ## Resources for learning R and working in RStudio
