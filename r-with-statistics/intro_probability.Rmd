@@ -49,7 +49,125 @@ While experiments allow us to infer causation. It is said for the most parts, be
 
 ![](r_images/spotlight.png)
 
+![](r_images/library.png)
 
+![](r_images/dim.png)
+
+![](r_images/name.png)
+
+![](r_images/ggplot.png)
+
+![](r_images/gplot.png)
+
+![](r_images/geom.png)
+
+![](r_images/gtwo.png)
+
+```{r}
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(statsr)
+
+data(present)
+View(present)
+
+arbuthnot <- arbuthnot %>%
+  mutate(more_boys = boys > girls)
+
+range(present$year)
+
+arbuthnot <- arbuthnot %>%
+  mutate(total = boys + girls)
+```
+
+![](r_images/propor.png)
+
+![](r_images/ratio.png)
+
+```{r}
+
+ggplot(data = arbuthnot, aes(x = year, y = girls)) +
+  geom_point() + 
+  geom_smooth()
+
+```
+```{r}
+
+arbuthnot <- arbuthnot %>%
+  mutate(more_boys = boys > girls)
+
+more_boys <- boys > girls
+
+arbuthnot <- arbuthnot %>%
+  mutate(more_boys = boys > girls)
+
+```
+```{r}
+present <- present %>%
+  mutate(total = boys + girls)
+View(present)
+
+present <- present %>%
+  mutate(prop_boys = boys / total)
+View(present)
+
+ggplot(data = present, aes(x = year, y = prop_boys)) +
+  geom_point() + 
+  geom_smooth()
+```
+
+```{r}
+present <- present %>%
+  mutate(more_boys = boys > girls)
+View(present)
+
+present <- present %>%
+  mutate(prop_boy_girl = boys / girls)
+View(present)
+
+ggplot(data = present, aes(x = year, y = prop_boy_girl)) +
+  geom_point() + 
+  geom_smooth()
+
+```
+
+```{r}
+present <- present %>%
+  arrange(desc(total))
+View(present)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
 
 
 
