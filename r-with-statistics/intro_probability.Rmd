@@ -141,10 +141,12 @@ View(present)
 ```
 
 
+![](r_images/scatterplots.png)
 
+![](r_images/relative.png)
 
-
-
+ ![](r_images/revisit.png)
+ 
 
 
 
