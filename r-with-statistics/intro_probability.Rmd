@@ -147,10 +147,22 @@ View(present)
 
  ![](r_images/revisit.png)
  
+![](r_images/histo.png)
+
+![](r_images/skewness.png)
+
+![](r_images/modals.png)
 
 
+![](r_images/dotplot.png)
 
+![](r_images/boxplot.png)
 
+![](r_images/intensity.png)
+
+![](r_images/centre.png)
+
+![](r_images/mean.png)
 
 
 
