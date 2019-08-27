@@ -290,8 +290,7 @@ View(nycflights)
 nycflights <- nycflights %>%
   mutate(avg_speed = distance / air_time) %>% 
   arrange(desc(avg_speed))
-nycflights %>% 
-  select(avg_speed, tailnum)
+nycflights %>% select(avg_speed, tailnum)
 
 ```
 
