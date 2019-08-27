@@ -182,4 +182,123 @@ View(present)
 
 ![](r_images/goals.png)
 
+![](r_images/barhist.png)
+
+![](r_images/segmented.png)
+
+![](r_images/mosaic.png)
+
+![](r_images/claims.png)
+
+![](r_images/nullalt.png)
+
+![](r_images/framework.png)
+
+![](r_images/decision.png)
+
+![](r_images/simulation.png)
+
+![](r_images/summary.png)
+
+```{r}
+library(devtools)
+library(dplyr)
+library(ggplot2)
+library(shiny)
+```
+
+```{r}
+
+```
+
+![](r_images/flights.png)
+
+![](r_images/structure.png)
+
+![](r_images/verbs.png)
+
+![](r_images/analysis.png)
+
+![](r_images/band.png)
+
+![](r_images/bandwidth.png)
+
+![](r_images/filter.png)
+
+![](r_images/summarize.png)
+
+```{r}
+
+sfo_feb_flights <- nycflights %>%
+  filter(dest == "SFO", month == 2)
+
+View(sfo_feb_flights)
+
+```
+
+![](r_images/origin.png)
+
+```{r}
+rdu_flights %>%
+  group_by(origin) %>%
+  summarise(mean_dd = mean(dep_delay), sd_dd = sd(dep_delay), n = n())
+```
+
+```{r}
+sfo_feb_flights %>%
+  group_by(carrier) %>%
+  summarise(median_dd = median(arr_delay), iqr_dd = IQR(arr_delay), n = n())
+```
+
+![](r_images/departure.png)
+
+![](r_images/reliable.png)
+
+```{r}
+ggplot(nycflights, aes(x = factor(month), y = dep_delay)) +
+  geom_boxplot()
+```
+
+![](r_images/nycport.png)
+
+```{r}
+nycflights <- nycflights %>%
+  mutate(dep_type = ifelse(dep_delay < 5, "on time", "delayed"))
+
+nycflights %>%
+  group_by(origin) %>%
+  summarise(ot_dep_rate = sum(dep_type == "on time") / n()) %>%
+  arrange(desc(ot_dep_rate))
+```
+
+![](r_images/visual.png)
+
+```{r}
+ggplot(data = nycflights, aes(x = origin, fill = dep_type)) +
+  geom_bar()
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(statsr)
+
+data(nycflights)
+View(nycflights)
+
+nycflights <- nycflights %>%
+  mutate(avg_speed = distance / air_time) %>% 
+  arrange(desc(avg_speed))
+nycflights %>% 
+  select(avg_speed, tailnum)
+
+```
+
+
+
+
+
+
+
 
