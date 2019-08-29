@@ -95,6 +95,99 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "white", size = 4) + geom_point(mapping = aes(x = displ, y = hwy, color = drv), size = 3)
 ```
 
+What is the default geom associated with stat_summary()? How could you rewrite the previous plot to use that geom function instead of the stat function?
+
+geom_pointrange, 
+
+```{r}
+ggplot(data = diamonds) +
+  geom_pointrange(mapping = aes(x = cut, y = depth),
+                  stat = "summary",
+                  fun.ymin = min,
+                  fun.ymax = max,
+                  fun.y = median)
+```
+
+`geom_col` leaves the data as it is. `geom_bar()` creates two variables (count and prop) and then graphs the count data on the y axis.
+
+```{r}
+?stat_smooth
+```
+
+Most geoms and stats come in pairs that are almost always used in concert. Read through the documentation and make a list of all the pairs. What do they have in common?
+```{r}
+
+```
+
+	
+geom	stat
+area	identity
+ribbon	identity
+bar	count
+col	identity
+bin2d	bind2d
+blank	identity
+boxplot	boxplot
+contour	contour
+count	sum
+crossbar	identity
+errorbar	identity
+errorbarh	identity
+linerange	identity
+pointrange	identity
+curve	identity
+segment	identity
+density	density
+density_2d	density2d
+freqpoly	bin
+histogram	bin
+hex	binhex
+jitter	identity
+label	identity
+path	identity
+line	identity
+map	identity
+point	identity
+polygon	identity
+quantile	quantile
+raster	identity
+rect	identity
+rug	identity
+smooth	smooth
+spoke	spoke
+step	identity
+text	identity
+tile	identity
+violin	ydensity
+
+```{r}
+stat_smooth()
+```
+What variables does stat_smooth() compute? What parameters control its behaviour?
+
+`stat_smooth()` computes the y, the predicted value of y for each x value.
+
+```{r}
+ggplot(data = diamonds, aes(x = price, y = carat)) + stat_smooth()
+```
+
+
+the se of that value predicted, together with the upper and lower bound of that point prediction.
+
+In our proportion bar chart, we need to set group = 1. Why? In other words what is the problem with these two graphs?
+
+```{r}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
+```
+
+
+```{r}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, y = ..count.. / sum(..count..), fill = color))
+```
+
+**
 
 
 
